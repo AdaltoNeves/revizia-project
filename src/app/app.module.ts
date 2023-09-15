@@ -15,13 +15,18 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatButtonModule} from '@angular/material/button';
-
+import { VehicleComponent } from './components/vehicle/vehicle.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    VehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,11 @@ import {MatButtonModule} from '@angular/material/button';
     MatExpansionModule,
     MatListModule,
     MatBottomSheetModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
