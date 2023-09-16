@@ -1,73 +1,102 @@
-<div style="display: flex; justify-content: center; align-items: center; height: 90vh;">
+<div style="display: flex; justify-content: center; align-items: center; height: 90vh; width: 99%;">
 
-    <mat-card style="width: 80%; height: 80%">
-        <mat-card-content>Veiculos</mat-card-content>
-        <div class="input-container">
-            <mat-form-field class="input-field">
-              <mat-label>Marca</mat-label>
-              <input matInput placeholder="Enter your name">
-            </mat-form-field>
-          
-            <mat-form-field class="input-field">
-              <mat-label>Modelo</mat-label>
-              <input matInput type="email" placeholder="Enter your email">
-            </mat-form-field>
-          
-            <mat-form-field class="input-field">
-              <mat-label>Ano</mat-label>
-              <input matInput type="tel" placeholder="Enter your phone number">
-            </mat-form-field>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Veiculos</mat-card-title>
+    </mat-card-header>
 
-            <mat-form-field class="input-field">
-              <mat-label>Número Chassi</mat-label>
-              <input matInput placeholder="Enter your username">
-            </mat-form-field>
-          
-            <mat-form-field class="input-field">
-              <mat-label>Cor</mat-label>
-              <input matInput type="text" placeholder="Enter your password">
-            </mat-form-field>
+    <mat-card-content>
+      <div class="input-container">
+        <mat-form-field class="input-field">
+          <mat-label>Marca</mat-label>
+          <input matInput placeholder="Enter your name">
+        </mat-form-field>
 
-            <mat-form-field class="input-field">
-                <mat-label>Cor</mat-label>
-                <input matInput type="text" placeholder="Enter your password">
-              </mat-form-field>
-        
+        <mat-form-field class="input-field">
+          <mat-label>Modelo</mat-label>
+          <input matInput type="email" placeholder="Enter your email">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+          <mat-label>Ano</mat-label>
+          <input matInput type="tel" placeholder="Enter your phone name">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+          <mat-label>Número Chassi</mat-label>
+          <input matInput placeholder="Enter your username">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+          <mat-label>Cor</mat-label>
+          <input matInput type="text" placeholder="Enter your password">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+          <mat-label>Cor</mat-label>
+          <input matInput type="text" placeholder="Enter your password">
+        </mat-form-field>
+      </div>
+
+      <div style="margin-top: 2%;">
+
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button class="responsive-button" (click)="openDialog()" color="primary">Novo</button>
+            <button mat-raised-button class="responsive-button" color="accent">Excluir</button>
           </div>
+        </section>
+        <div class="table-container">
+          <div style="max-height: 300px; overflow-y: auto;">
 
             <table mat-table [dataSource]="dataSource">
-          
+
               <!-- Position Column -->
-              <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
               </ng-container>
-          
+
               <!-- Name Column -->
               <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <th mat-header-cell *matHeaderCellDef> Marca </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
               </ng-container>
-          
+
               <!-- Weight Column -->
               <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <th mat-header-cell *matHeaderCellDef> Ano </th>
                 <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
               </ng-container>
-          
+
               <!-- Symbol Column -->
               <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <th mat-header-cell *matHeaderCellDef> Número Chassi </th>
                 <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
               </ng-container>
-          
+
+              <ng-container matColumnDef="color">
+                <th mat-header-cell *matHeaderCellDef>Cor </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="update">
+                <th mat-header-cell *matHeaderCellDef>Atualizar </th>
+                <td mat-cell *matCellDef="let element"><mat-icon>edit</mat-icon> </td>
+              </ng-container>
+
+
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-          
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                           showFirstLastButtons
-                           aria-label="Select page of periodic elements">
-            </mat-paginator>
-    </mat-card>
+          </div>
+
+        </div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
