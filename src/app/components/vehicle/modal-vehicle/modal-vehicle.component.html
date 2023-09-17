@@ -1,40 +1,45 @@
-<mat-card>
-  <div class="input-container">
-    <mat-form-field class="input-field">
-      <mat-label>Marca</mat-label>
-      <input matInput placeholder="Enter your name">
-    </mat-form-field>
 
-    <mat-form-field class="input-field">
-      <mat-label>Modelo</mat-label>
-      <input matInput type="email" placeholder="Enter your email">
-    </mat-form-field>
+<mat-card  >
 
-    <mat-form-field class="input-field">
-      <mat-label>Ano</mat-label>
-      <input matInput type="tel" placeholder="Enter your phone name">
-    </mat-form-field>
-
-    <mat-form-field class="input-field">
-      <mat-label>Número Chassi</mat-label>
-      <input matInput placeholder="Enter your username">
-    </mat-form-field>
-
-    <mat-form-field class="input-field">
-      <mat-label>Cor</mat-label>
-      <input matInput type="text" placeholder="Enter your password">
-    </mat-form-field>
-
-    <mat-form-field class="input-field">
-      <mat-label>Cor</mat-label>
-      <input matInput type="text" placeholder="Enter your password">
-    </mat-form-field>
+  <div class="header">
+    <h2>{{text}}</h2>
   </div>
+  
+  <form  [formGroup]="vehicleForm" #formDir="ngForm" >
+
+    <div class="input-container">
+      <mat-form-field class="input-field">
+        <mat-label>Marca</mat-label>
+        <input matInput placeholder="Enter your name" formControlName="brand">
+      </mat-form-field>
+  
+      <mat-form-field class="input-field">
+        <mat-label>Modelo</mat-label>
+        <input matInput type="email" placeholder="Enter your email" formControlName="model">
+      </mat-form-field>
+  
+      <mat-form-field class="input-field">
+        <mat-label>Ano</mat-label>
+        <input matInput type="tel" placeholder="Enter your phone name" formControlName="yearVehicle">
+      </mat-form-field>
+  
+      <mat-form-field class="input-field">
+        <mat-label>Número Chassi</mat-label>
+        <input matInput placeholder="Enter your username" formControlName="numberChassi">
+      </mat-form-field>
+  
+      <mat-form-field class="input-field">
+        <mat-label>Cor</mat-label>
+        <input matInput type="text" placeholder="Enter your password" formControlName="color">
+      </mat-form-field>
+  
+    </div>
+  </form>
 
   <div style="justify-content: right;display: flex; margin-top: 38px;" >
     <section>
       <div class="example-button-row">
-        <button mat-raised-button class="responsive-button" color="primary" [mat-dialog-close]="data" cdkFocusInitial>Salvar</button>
+        <button mat-raised-button class="responsive-button" disabled="{{vehicleForm.invalid}}" color="primary" (click)="saveVeichle()" [mat-dialog-close]="data" cdkFocusInitial>Salvar</button>
         <button mat-raised-button class="responsive-button" color="warn" (click)="onNoClick()">Cancelar</button>
       </div>
     </section>

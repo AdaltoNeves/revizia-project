@@ -7,14 +7,11 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { VehiclesService } from 'src/app/services/vehicles.service';
 import { ModalVehicleComponent } from './modal-vehicle/modal-vehicle.component';
-
-export interface PeriodicElement {
-  name: string;
-  id: number;
-  weight: number;
-  symbol: string;
-}
-
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+import { Ivehicle } from 'src/app/model/vehicle.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 /**
  * @title Table with pagination
  */
@@ -22,20 +19,27 @@ export interface PeriodicElement {
   selector: 'app-vehicle',
   templateUrl: './vehicle.component.html',
   styleUrls: ['./vehicle.component.scss'],
+
 })
 export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'name', 'weight', 'symbol', 'color', 'update'];
-  dataSource = new MatTableDataSource<PeriodicElement>;
+  displayedColumns: string[] = ['id', 'brand', 'model', 'year', 'color', 'update', 'delete'];
+  dataSource = new MatTableDataSource<Ivehicle>;
+  dataSourceold = new MatTableDataSource<Ivehicle>;
   private mySubscribe: Subscription[] = [];
+
+  filterBrand: string = '';
+  filterModel: string = '';
+  filterYear: string = '';
+  showSpinner: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private vehiclesService: VehiclesService,
-    private liveAnnouncer: LiveAnnouncer,
-    public dialog: MatDialog
-  ) {  }
+    private _vehiclesService: VehiclesService,
+    public _dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.getVeicles();
@@ -50,28 +54,71 @@ export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mySubscribe.forEach(s => s.unsubscribe());
   }
 
-  getVeicles() {
-    this.mySubscribe.push(this.vehiclesService.getVeicles().subscribe((resp) => {
+  public getVeicles(): void {
+    this.dataSource.data = [];
+    this.showSpinner = true;
+
+    this.mySubscribe.push(this._vehiclesService.getVehicle().subscribe((resp) => {
       this.dataSource.data = resp
-    }, error => {
-      console.log("error", error.message);
-    }))
+      this.dataSourceold.data = resp
+      this.showSpinner = false;
+    }));
   }
 
-  public updateVeicles(): void {}
-
-  public deleteVeicles(): void {}
-
-
-  public openDialog(): void {
-    const dialogRef = this.dialog.open(ModalVehicleComponent, {
-      height: '300px',
+  public openDialogVehicle(_isCreate: boolean, _idVehicle?: Ivehicle): void {
+    const dialogRef = this._dialog.open(ModalVehicleComponent, {
+      height: '400px',
       width: '800px',
-      data: { name: 'Cheguei' },
+      data: { isCreate: _isCreate, vehicle: _idVehicle },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed',result);
+      if (result) {
+        this.getVeicles();
+      }
     });
   }
+
+  public deleteVehicle(_idVehicle: number): void {
+    const dialogRef = this._dialog.open(DialogConfirmComponent);
+    dialogRef.
+
+      afterClosed().subscribe(result => {
+        if (result) {
+          this._vehiclesService.deleteVecicle(_idVehicle).subscribe();
+          this.getVeicles();
+        }
+      });
+  }
+
+  public filterVehicle(): void {
+
+    this.dataSource.data = this.dataSourceold.data.filter((element) => {
+      const marcaCoincide = this.filterBrand === '' || element.brand.toLowerCase().includes(this.filterBrand.toLowerCase());
+      const modeloCoincide = this.filterModel === '' || element.model.toLowerCase().includes(this.filterModel.toLowerCase());
+      const AnoCoincide = this.filterYear === '' || element.yearVehicle.toLowerCase().includes(this.filterYear.toLowerCase());
+      
+      return marcaCoincide && modeloCoincide && AnoCoincide;
+    });
+  }
+
+  public cleanFilter(): void {
+    this.filterBrand = '';
+    this.filterModel = '';
+    this.filterYear = '';
+    this.filterVehicle();
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

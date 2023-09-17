@@ -22,6 +22,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ModalVehicleComponent } from './components/vehicle/modal-vehicle/modal-vehicle.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
+import { FormsModule } from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     DashboardComponent,
     HeaderComponent,
     VehicleComponent,
-    ModalVehicleComponent
+    ModalVehicleComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
