@@ -1,41 +1,41 @@
-<div class="page-container">  
-  
+<div class="page-container">
+
   <mat-card>
     <mat-card-header>
       <mat-card-title>Veiculos</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-progress-spinner mode="indeterminate"  *ngIf="showSpinner" class="spinner"></mat-progress-spinner>
+      <mat-progress-spinner mode="indeterminate" *ngIf="showSpinner" class="spinner"></mat-progress-spinner>
       <div class="input-container">
         <mat-form-field class="input-field">
           <mat-label>Marca</mat-label>
-          <input matInput  [(ngModel)]="filterBrand">
+          <input matInput [(ngModel)]="filterBrand">
         </mat-form-field>
 
         <mat-form-field class="input-field">
           <mat-label>Modelo</mat-label>
-          <input matInput type="email"  [(ngModel)]="filterModel">
+          <input matInput type="email" [(ngModel)]="filterModel">
         </mat-form-field>
 
         <mat-form-field class="input-field">
           <mat-label>Ano</mat-label>
-          <input matInput type="text"  [(ngModel)]="filterYear">
+          <input matInput type="text" [(ngModel)]="filterYear">
         </mat-form-field>
 
         <mat-form-field class="input-field">
           <mat-label>Número Chassi</mat-label>
-          <input matInput >
+          <input matInput>
         </mat-form-field>
 
         <mat-form-field class="input-field">
           <mat-label>Cor</mat-label>
-          <input matInput type="text" >
+          <input matInput type="text">
         </mat-form-field>
 
         <div class="button-row" fxLayout="row" fxLayoutAlign="space-between">
           <button mat-raised-button class="responsive-button" (click)="cleanFilter()" color="primary">Limpar</button>
           <button mat-raised-button class="responsive-button" (click)="filterVehicle()" color="primary">Filtrar</button>
-      </div>
+        </div>
       </div>
 
       <div style="margin-top: 2%;">
@@ -71,11 +71,11 @@
               </ng-container>
 
               <ng-container matColumnDef="color">
-                <th mat-header-cell *matHeaderCellDef  >Cor</th>
-                <td mat-cell *matCellDef="let element" > {{element.color}} </td>
+                <th mat-header-cell *matHeaderCellDef>Cor</th>
+                <td mat-cell *matCellDef="let element"> {{element.color}} </td>
               </ng-container>
 
-              
+
               <ng-container matColumnDef="update">
                 <th mat-header-cell *matHeaderCellDef>Atualizar </th>
                 <td mat-cell *matCellDef="let element" (click)="openDialogVehicle(false,element)">

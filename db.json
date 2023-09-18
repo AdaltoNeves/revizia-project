@@ -19,43 +19,12 @@
   "vehicles": [
     {
       "brand": "VW",
-      "model": "GOLF ADT",
-      "yearVehicle": "2022",
-      "numberChassi": "54356438df",
-      "color": "PRATA",
-      "id": 1
-    },
-    {
-      "brand": "FIAT",
-      "model": "GOLss",
-      "yearVehicle": "2022",
-      "numberChassi": "475983479",
-      "color": "PRETO",
-      "id": 2
-    },
-    {
-      "brand": "FIAT",
-      "model": "GOLss",
-      "yearVehicle": "2023",
-      "numberChassi": "475983479",
-      "color": "PRETO",
-      "id": 2
-    },
-    {
-      "brand": "FIAT",
-      "model": "GOLss",
-      "yearVehicle": "2023",
-      "numberChassi": "475983479",
-      "color": "PRETO",
-      "id": 2
-    },
-    {
-      "brand": "VW",
       "model": "GOLF 123",
       "yearVehicle": "2023",
       "numberChassi": "54356438df",
       "color": "PRATA",
-      "id": 1
+      "id": 1,
+      "yearSales": 2020
     },
     {
       "brand": "FIAT",
@@ -63,31 +32,16 @@
       "yearVehicle": "2023",
       "numberChassi": "475983479",
       "color": "PRETO",
-      "id": 2
+      "id": 2,
+      "yearSales": 2020
     },
     {
-      "brand": "FIAT",
-      "model": "GOLss",
+      "brand": "FORD",
+      "model": "FIESTA",
       "yearVehicle": "2023",
-      "numberChassi": "475983479",
-      "color": "PRETO",
-      "id": 2
-    },
-    {
-      "brand": "FIAT",
-      "model": "GOLss",
-      "yearVehicle": "2023",
-      "numberChassi": "475983479",
-      "color": "PRETO",
-      "id": 2
-    },
-    {
-      "brand": "FIAT",
-      "model": "GOLss",
-      "yearVehicle": "2023",
-      "numberChassi": "475983479",
-      "color": "PRETO",
-      "id": 2
+      "numberChassi": "54356438",
+      "color": "VERMELHO ",
+      "id": 3
     }
   ]
 }

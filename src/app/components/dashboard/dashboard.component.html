@@ -1,1 +1,78 @@
-<p>dashboard works!</p>
+<div style="justify-content: center; display: flex; margin-top: 20px; ">
+  <h1 style="color: rgb(156, 152, 152);">Revizia Project Dashboard</h1>
+</div>
+<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+  <mat-card class="totalizador-card">
+    <div id="container">
+      <div class="left-content">
+        <p>Total de Veiculos</p>
+        <h1>5</h1>
+      </div>
+      <div class="center-content">
+        <h1><mat-icon style="color: orange"> directions_car</mat-icon></h1>
+      </div>
+    </div>
+  </mat-card>
+  
+  <mat-card class="totalizador-card">
+    <div id="container">
+      <div class="left-content">
+        <p>Total vendidos</p>
+        <h1>4</h1>
+      </div>
+      <div class="center-content">
+        <h1><mat-icon style="color: orange"> directions_car</mat-icon></h1>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="totalizador-card">
+    <div id="container">
+      <div class="left-content">
+        <p>Total em analise </p>
+        <h1>10</h1>
+      </div>
+      <div class="center-content">
+        <h1><mat-icon style="color: orange"> directions_car</mat-icon></h1>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<mat-card>
+  <div class="input-container">
+    
+  
+    <mat-form-field>
+      <mat-label>Venda anual</mat-label>
+      <input matInput type="number" min="1900" max="2099" placeholder="Digite o ano" [(ngModel)]="ano">
+    </mat-form-field>
+  
+ 
+  
+    <div class="button-row" fxLayout="row" fxLayoutAlign="space-between">
+      <button mat-raised-button class="responsive-button"  color="primary">Limpar</button>
+      <button mat-raised-button class="responsive-button"  color="primary">Filtrar</button>
+    </div>
+  </div>
+</mat-card>
+<br>
+
+
+<mat-card>
+  <div class="containers">
+    <div class="box chart-box" style="display: flow;">
+      <p><b>Veiculo vendidos </b></p>
+      <hr>
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="box chart-box" style="display: flow;">
+      <p><b>Veiculo vendidos </b></p>
+      <hr>
+      <canvas id="myChartLine"></canvas>
+    </div>
+  </div>
+</mat-card>
+
+
+
