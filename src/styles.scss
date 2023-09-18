@@ -13,11 +13,13 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .page-container{
-    display: flex;
-     justify-content: center; 
-     align-items: center; 
-     height: 90vh; 
-     width: 99%;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 90vh; */
+    /* width: 99%; */
+    margin-top: 22px;
+
 }
 
 
