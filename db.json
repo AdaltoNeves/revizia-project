@@ -18,15 +18,6 @@
   ],
   "vehicles": [
     {
-      "brand": "VW",
-      "model": "GOLF 123",
-      "yearVehicle": "2023",
-      "numberChassi": "54356438df",
-      "color": "PRATA",
-      "id": 1,
-      "yearSales": 2020
-    },
-    {
       "brand": "FIAT",
       "model": "GOLss",
       "yearVehicle": "2023",
@@ -36,11 +27,11 @@
       "yearSales": 2020
     },
     {
-      "brand": "FORD",
-      "model": "FIESTA",
-      "yearVehicle": "2023",
-      "numberChassi": "54356438",
-      "color": "VERMELHO ",
+      "brand": "gfhfg",
+      "model": "gfhgf",
+      "yearVehicle": "fghfg",
+      "numberChassi": "gfhgfh",
+      "color": "hghfg",
       "id": 3
     }
   ]

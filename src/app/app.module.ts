@@ -28,7 +28,8 @@ import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confi
 import { FormsModule } from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCheckboxModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

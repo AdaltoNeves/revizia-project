@@ -13,7 +13,7 @@
       </div>
     </div>
   </mat-card>
-  
+
   <mat-card class="totalizador-card">
     <div id="container">
       <div class="left-content">
@@ -41,23 +41,22 @@
 
 <mat-card>
   <div class="input-container">
-    
-  
     <mat-form-field>
-      <mat-label>Venda anual</mat-label>
-      <input matInput type="number" min="1900" max="2099" placeholder="Digite o ano" [(ngModel)]="ano">
+      <mat-label>fILTRO</mat-label>
+      <mat-select [(ngModel)]="ano" >
+        <mat-option (click)="filterDashboard(food.ano)"   *ngFor="let food of listGroup"  [value]="food.ano">
+          {{food.ano}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-  
- 
-  
+
     <div class="button-row" fxLayout="row" fxLayoutAlign="space-between">
-      <button mat-raised-button class="responsive-button"  color="primary">Limpar</button>
-      <button mat-raised-button class="responsive-button"  color="primary">Filtrar</button>
+      <button mat-raised-button class="responsive-button" color="primary">Limpar</button>
+      <button mat-raised-button class="responsive-button"color="primary">Filtrar</button>
     </div>
   </div>
 </mat-card>
 <br>
-
 
 <mat-card>
   <div class="containers">
@@ -73,6 +72,3 @@
     </div>
   </div>
 </mat-card>
-
-
-
