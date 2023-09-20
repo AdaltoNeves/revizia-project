@@ -19,28 +19,19 @@
   "vehicles": [
     {
       "brand": "FIAT",
-      "model": "GOLss",
-      "yearVehicle": "2023",
+      "model": "UNO",
+      "yearVehicle": 2024,
       "numberChassi": "475983479",
       "color": "PRETO",
-      "id": 2,
-      "yearSales": 2020
+      "id": 2
     },
     {
-      "brand": "KADET",
-      "model": "KADET",
-      "yearVehicle": "KADET",
-      "numberChassi": "KADET",
-      "color": "KADET",
-      "id": 4
-    },
-    {
-      "brand": "FIAT",
-      "model": "UNO",
+      "brand": "FORD s",
+      "model": "FIESTA",
       "yearVehicle": 2002,
-      "numberChassi": "435345",
-      "color": "PRETO",
-      "id": 5
+      "numberChassi": "534645",
+      "color": "PRATA",
+      "id": 4
     }
   ]
 }
