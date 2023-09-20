@@ -55,7 +55,7 @@ export class ModalVehicleComponent implements OnInit {
     this.vehicleForm = new FormGroup({
       brand: new FormControl("", [Validators.required]),
       model: new FormControl("", [Validators.required]),
-      yearVehicle: new FormControl("", [Validators.required]),
+      yearVehicle: new FormControl( [Validators.required]),
       numberChassi: new FormControl("", [Validators.required]),
       color: new FormControl("", [Validators.required]),
     });

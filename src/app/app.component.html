@@ -34,7 +34,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
-    <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav" opened>
+    <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true"  class="app-sidenav" opened>
         <mat-nav-list>
             <mat-list-item routerLink="/dashboard">
                 <mat-icon>dashboard</mat-icon><span>Dashboard</span>
@@ -44,7 +44,7 @@
                     Cadastro
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-list-item routerLink="/vehicle">Veiculo</a>
+                    <a mat-list-item routerLink="/vehicle" class="hovered-menu-item">Veiculo</a>
                 </mat-nav-list>
             </mat-expansion-panel>
         </mat-nav-list>

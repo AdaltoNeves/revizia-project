@@ -2,7 +2,9 @@
     id: number,
     brand: string,
     model: string,
-    yearVehicle: string,
+    yearVehicle: number,
     numberChassi: string,
-    color: string
+    color: string,
+    totalSold:number,
+    status:string;
 }

@@ -1,17 +1,14 @@
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { VehiclesService } from 'src/app/services/vehicles.service';
 import { ModalVehicleComponent } from './modal-vehicle/modal-vehicle.component';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 import { Ivehicle } from 'src/app/model/vehicle.interface';
-import { MatSnackBar } from '@angular/material/snack-bar';
 /**
  * @title Table with pagination
  */
@@ -38,7 +35,6 @@ export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private _vehiclesService: VehiclesService,
     public _dialog: MatDialog,
-    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -65,11 +61,11 @@ export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
     }));
   }
 
-  public openDialogVehicle(_isCreate: boolean, _idVehicle?: Ivehicle): void {
+  public openDialogVehicle(isCreate: boolean, idVehicle?: Ivehicle): void {
     const dialogRef = this._dialog.open(ModalVehicleComponent, {
       height: '400px',
       width: '800px',
-      data: { isCreate: _isCreate, vehicle: _idVehicle },
+      data: { isCreate: isCreate, vehicle: idVehicle },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -79,13 +75,13 @@ export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  public deleteVehicle(_idVehicle: number): void {
+  public deleteVehicle(idVehicle: number): void {
     const dialogRef = this._dialog.open(DialogConfirmComponent);
     dialogRef.
 
       afterClosed().subscribe(result => {
         if (result) {
-          this._vehiclesService.deleteVecicle(_idVehicle).subscribe();
+          this._vehiclesService.deleteVecicle(idVehicle).subscribe();
           this.getVeicles();
         }
       });
@@ -96,7 +92,7 @@ export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dataSource.data = this.dataSourceold.data.filter((element) => {
       const marcaCoincide = this.filterBrand === '' || element.brand.toLowerCase().includes(this.filterBrand.toLowerCase());
       const modeloCoincide = this.filterModel === '' || element.model.toLowerCase().includes(this.filterModel.toLowerCase());
-      const AnoCoincide = this.filterYear === '' || element.yearVehicle.toLowerCase().includes(this.filterYear.toLowerCase());
+      const AnoCoincide = this.filterYear === '' || element.yearVehicle.toString().toLowerCase().includes(this.filterYear.toString().toLowerCase());
       
       return marcaCoincide && modeloCoincide && AnoCoincide;
     });

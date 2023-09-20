@@ -27,12 +27,20 @@
       "yearSales": 2020
     },
     {
-      "brand": "gfhfg",
-      "model": "gfhgf",
-      "yearVehicle": "fghfg",
-      "numberChassi": "gfhgfh",
-      "color": "hghfg",
-      "id": 3
+      "brand": "KADET",
+      "model": "KADET",
+      "yearVehicle": "KADET",
+      "numberChassi": "KADET",
+      "color": "KADET",
+      "id": 4
+    },
+    {
+      "brand": "FIAT",
+      "model": "UNO",
+      "yearVehicle": 2002,
+      "numberChassi": "435345",
+      "color": "PRETO",
+      "id": 5
     }
   ]
 }

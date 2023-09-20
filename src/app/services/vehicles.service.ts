@@ -19,7 +19,7 @@ export class VehiclesService {
       )
   }
 
-  createVehicle(data: any): Observable<Ivehicle[]> {
+  createVehicle(data: Ivehicle): Observable<Ivehicle[]> {
     return this.http.post<Ivehicle[]>(`${environment.apiURL}/vehicles`, data)
       .pipe(
         catchError(this.errorHandl)

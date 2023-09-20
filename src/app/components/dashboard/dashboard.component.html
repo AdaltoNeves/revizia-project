@@ -1,4 +1,4 @@
-<div style="justify-content: center; display: flex; margin-top: 20px; ">
+<div class="div-text">
   <h1 style="color: rgb(156, 152, 152);">Revizia Project Dashboard</h1>
 </div>
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
@@ -6,10 +6,10 @@
     <div id="container">
       <div class="left-content">
         <p>Total de Veiculos</p>
-        <h1>5</h1>
+        <h1>{{totalVehicle}}</h1>
       </div>
       <div class="center-content">
-        <h1><mat-icon style="color: orange"> directions_car</mat-icon></h1>
+        <h1><mat-icon> directions_car</mat-icon></h1>
       </div>
     </div>
   </mat-card>
@@ -17,11 +17,11 @@
   <mat-card class="totalizador-card">
     <div id="container">
       <div class="left-content">
-        <p>Total vendidos</p>
-        <h1>4</h1>
+        <p>Vendido</p>
+        <h1>{{totalSold}}</h1>
       </div>
       <div class="center-content">
-        <h1><mat-icon style="color: orange"> directions_car</mat-icon></h1>
+        <h1><mat-icon> directions_car</mat-icon></h1>
       </div>
     </div>
   </mat-card>
@@ -30,10 +30,10 @@
     <div id="container">
       <div class="left-content">
         <p>Total em analise </p>
-        <h1>10</h1>
+        <h1>{{totalAnalysis}}</h1>
       </div>
       <div class="center-content">
-        <h1><mat-icon style="color: orange"> directions_car</mat-icon></h1>
+        <h1><mat-icon> directions_car</mat-icon></h1>
       </div>
     </div>
   </mat-card>
@@ -43,23 +43,22 @@
   <div class="input-container">
     <mat-form-field>
       <mat-label>fILTRO</mat-label>
-      <mat-select [(ngModel)]="ano" >
-        <mat-option (click)="filterDashboard(food.ano)"   *ngFor="let food of listGroup"  [value]="food.ano">
-          {{food.ano}}
+      <mat-select [(ngModel)]="yearVehicle">
+        <mat-option (click)="filterDashboard(yearVehicle)" *ngFor="let l of listGroup" [value]="l.yearVehicle">
+          {{l.yearVehicle}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <div class="button-row" fxLayout="row" fxLayoutAlign="space-between">
-      <button mat-raised-button class="responsive-button" color="primary">Limpar</button>
-      <button mat-raised-button class="responsive-button"color="primary">Filtrar</button>
+      <button mat-raised-button class="responsive-button" color="primary">Filtrar</button>
     </div>
   </div>
 </mat-card>
 <br>
 
 <mat-card>
-  <div class="containers">
+  <div class="container-dashboard">
     <div class="box chart-box" style="display: flow;">
       <p><b>Veiculo vendidos </b></p>
       <hr>

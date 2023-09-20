@@ -15,3 +15,12 @@
     align-items: center;
     justify-content: center;
 }
+
+.hovered-menu-item:hover {
+    color: orange;
+  }
+
+  .mat-nav-list a:hover {
+    text-decoration: none; /* Isso remove sublinhados que podem ser aplicados no hover */
+    cursor: pointer; /* Isso altera o cursor para o padrão (seta) no hover */
+  }

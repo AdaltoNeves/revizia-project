@@ -1,185 +1,20 @@
-#divChart{
-    display: block;
-    width: 50%;
-    height: 400px;
-    
+
+.container-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-
-
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Isso centraliza verticalmente na tela */
-}
-
-.containers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .box {
-    width: 50%;
-    padding: 20px; /* Ajuste o preenchimento conforme necessário */
-    box-sizing: border-box;
-    text-align: center;
-    // border: 1px solid #b6b5b55e;
-  }
-
-  .div1, .div2 {
-    flex: 1;
-    min-width: 50%;
-    padding: 20px;
-    box-sizing: border-box;
-    border: black 1px solid;
-}
-
-
-  .chart-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Media query para telas menores */
-  @media (max-width: 768px) {
-    .box {
-      width: 100%;
-    }
-  }
-
-
-$gray-color: #AAAAAA;
-$gray-color-dark: #7A7A7A;
-$icon-size: 60px;
-
-.text-default {
-  // color: $theme-default;
-  margin: 10px;
-  padding-left: 80px;
-}
-
-.icon {
-  height: $icon-size;
-  width: $icon-size;
-  font-size: 70px;
-  padding-right: 70px;
-}
-
-.text-gray {
-  color: $gray-color;
-}
-
-
-body{
-  margin-top:20px;
-  background:#FAFAFA;
-}
-.order-card {
-  color: #fff;
-}
-
-.bg-c-purple {
-  background: linear-gradient(45deg,#8B5CF6,#8B5CF6);
-}
-
-.bg-c-pink {
-  background: linear-gradient(45deg,#FF5370,#ff869a);
-}
-
-
-.card {
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-  box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-  border: none;
-  margin-bottom: 30px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  width: auto;
-}
-
-.card .card-block {
-  padding: 25px;
-}
-
-.order-card i {
-  font-size: 26px;
-}
-
-.f-left {
-  float: left;
-}
-
-.f-right {
-  float: right;
-}
-
-.container-color{
-  background-color: white; 
-  padding-bottom: 30px
-
-}
-
-.card-totalize{
-  margin-top: 30px
-}
-
-.info-card{
-  font-size: 50px; 
-  margin-top: -26px;
-  margin-left: 175px;
-  margin-left:220px;
-  float: right;
-  ;
-}
-
-.borderCard{
-  border-radius: 50px;
-}
-
-.value-total{
-  float: left;
-}
-
-.position-tex-card{
-  margin-right: 154px;
-  width: fit-content;
-}
-
-.count {
-  font-size: 36px;
-  font-weight: bold;
-  color: #fffefe;
-  margin: 10px 0;
-}
-
-.totalizador-card {
-  background-color: white;
+.box {
+  width: 50%;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.totalizadores-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.totalizador-cards {
-  width: 300px; /* Ajuste o tamanho conforme necessário */
-  margin: 20px;
-  padding: 20px;
-}
-
 .totalizador-card {
-  width: 300px; /* Ajuste o tamanho conforme necessário */
+  width: 300px;
+  /* Ajuste o tamanho conforme necessário */
   margin: 20px;
   padding: 20px;
 }
@@ -201,56 +36,13 @@ body{
 h1 {
   font-size: 24px;
   margin: 0;
-  color: #333; /* Personalize a cor do texto conforme necessário */
+  color: #333;
+  /* Personalize a cor do texto conforme necessário */
 }
 
 p {
   font-size: 16px;
   margin: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .totalizador-card {
-    width: calc(50% - 20px); /* Distribui igualmente em telas médias */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .totalizador-card {
-    width: 100%; /* Empilha os cards em telas pequenas */
-  }
-}
-
-@media (min-width: 768px) {
-  .containers {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .containers > div {
-    flex: 0 0 48%; /* Defina o tamanho desejado */
-  }
-}
-
-/* Estilos para dispositivos de tela pequena (sm) */
-@media (max-width: 767px) {
-  .containers {
-    flex-direction: column; /* Empilhe os elementos verticalmente */
-  }
-
-  .containers > div {
-    flex: 0 0 100%; /* Use toda a largura disponível */
-  }
-}
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
 }
 
 .input-container {
@@ -265,4 +57,59 @@ p {
   margin: 8px;
   min-width: 120px;
   max-width: 200px;
+}
+
+.div-text{
+  justify-content: center; 
+  display: flex; 
+  margin-top: 20px;
+}
+
+mat-icon{
+  color: orange;
+}
+
+@media screen and (max-width: 768px) {
+  .totalizador-card {
+    width: calc(50% - 20px);
+    /* Distribui igualmente em telas médias */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .totalizador-card {
+    width: 100%;
+    /* Empilha os cards em telas pequenas */
+  }
+}
+
+@media (min-width: 768px) {
+  .containers {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .containers>div {
+    flex: 0 0 48%;
+    /* Defina o tamanho desejado */
+  }
+}
+
+/* Estilos para dispositivos de tela pequena (sm) */
+@media (max-width: 767px) {
+  .containers {
+    flex-direction: column;
+    /* Empilhe os elementos verticalmente */
+  }
+
+  .containers>div {
+    flex: 0 0 100%;
+    /* Use toda a largura disponível */
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 100%;
+  }
 }

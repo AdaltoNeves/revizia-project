@@ -1,13 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { VehiclesService } from 'src/app/services/vehicles.service';
 Chart.register(...registerables);
-
-interface XXs {
-  montadora: string;
-  ano: number;
-  totalVendido: number;
-}
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,73 +9,71 @@ interface XXs {
 
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild("meuCanvas", { static: true })
-  elemento!: ElementRef;
   public item: any
-  constructor() { this.groupDataByYear() }
   public chart: any;
   public objChar: any
-  public myChart!: Chart; 
-  public myChartBar!: Chart; 
-  ano = 2002
-  public tstValue!: number
-  groupedData: { [key: number]: XXs[] } = {};
+  public myChart!: Chart;
+  public myChartBar!: Chart;
+  yearVehicle = 2002;
 
-  listGroup:any
+  public totalSold!: number;
+  public totalVehicle!: number;
+  public totalAnalysis!: number;
 
-  
+  groupedVehicles: { yearVehicle: number, veiculos: any[] }[] = [];
+  listGroup: any
+
+  public listVehicle = [
+    { brand: 'VW', yearVehicle: 2002, totalSold: 15, status: 'vendido' },
+    { brand: 'FORD', yearVehicle: 2002, totalSold: 23, status: 'vendido' },
+    { brand: 'FIAT', yearVehicle: 2002, totalSold: 13, status: 'analise' },
+    { brand: 'SUBARU', yearVehicle: 2002, totalSold: 10, status: 'analise' },
+    { brand: 'CHEVROLET', yearVehicle: 2002, totalSold: 10, status: 'vendido' },
+    { brand: 'VW', yearVehicle: 2003, totalSold: 20, status: 'analise' },
+    { brand: 'FORD', yearVehicle: 2003, totalSold: 15, status: 'analise' },
+    { brand: 'FIAT', yearVehicle: 2003, totalSold: 5, status: 'vendido' },
+    { brand: 'SUBARU', yearVehicle: 2003, totalSold: 30, status: 'vendido' },
+    { brand: 'CHEVROLET', yearVehicle: 2001, totalSold: 13, status: 'vendido' },
+  ];
+
+  constructor(
+  ) { }
 
   ngOnInit(): void {
     this.createChart();
     this.createChartLine()
     this.groupVehiclesByYear(this.listVehicle)
-    this.filterDashboard(this.listGroup[0].ano)
-
+    this.filterDashboard(this.listGroup[0].yearVehicle)
+    this.getAnalysis();
   }
 
+  public getMakerLabels() {
+    var automakerLabels;
 
-  listVehicle = [
-    { 'montadora': 'VW', 'ano': 2002, 'totalVendido': 15 },
-    { 'montadora': 'FORD', 'ano': 2002, 'totalVendido': 23 },
-    { 'montadora': 'FIAT', 'ano': 2002, 'totalVendido': 13 },
-    { 'montadora': 'SUBARU', 'ano': 2002, 'totalVendido': 10 },
-    { 'montadora': 'CHEVROLET', 'ano': 2002, 'totalVendido': 10 },
-    { 'montadora': 'VW', 'ano': 2003, 'totalVendido': 20 },
-    { 'montadora': 'FORD', 'ano': 2003, 'totalVendido': 15 },
-    { 'montadora': 'FIAT', 'ano': 2003, 'totalVendido': 5 },
-    { 'montadora': 'SUBARU', 'ano': 2003, 'totalVendido': 30 },
-    { 'montadora': 'CHEVROLET', 'ano': 2001, 'totalVendido': 13 },
-  ];
+    this.listVehicle.map(function (obj) {
+      automakerLabels = obj.brand;
+    });
 
-  groupedDatas: { [key: number]: any[] } = {};
-
-  groupDataByYear() {
-    this.groupedDatas = this.listVehicle.reduce((acc, curr) => {
-      if (!acc[curr.ano]) {
-        acc[curr.ano] = [];
-      }
-      acc[curr.ano].push(curr);
-      return acc;
-    }, {} as { [key: number]: any[] });
+    return automakerLabels;
   }
- 
-  createChart() {
-    var montadoraLabels = this.listVehicle.map(function (obj) {
-      return obj.montadora;
+
+  public getTotalSolid(): any {
+    var totalSold
+
+    this.listVehicle.map(function (obj) {
+      totalSold = obj.totalSold;
     });
 
-    var totalVendido = this.listVehicle.map(function (obj) {
-      return obj.totalVendido;
-    });
+    return totalSold
+  }
 
-
+  public createChart(): void {
     this.myChartBar = new Chart("myChart", {
       type: 'bar',
       data: {
-        labels:montadoraLabels,
+        labels: this.getMakerLabels(),
         datasets: [{
-          label: '# of Votes',
-          data: totalVendido,
+          data: this.getTotalSolid(),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -109,23 +101,13 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  public createChartLine() {
-
-    var montadoraLabels = this.listVehicle.map(function (obj) {
-      return obj.montadora;
-    });
-
-    var totalVendido = this.listVehicle.map(function (obj) {
-      return obj.totalVendido;
-    });
-
+  public createChartLine(): void {
     this.myChart = new Chart("myChartLine", {
       type: 'line',
       data: {
-        labels: montadoraLabels,
+        labels: this.getMakerLabels(),
         datasets: [{
-          label: '# of Votes',
-          data: totalVendido,
+          data: this.getTotalSolid(),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -151,59 +133,57 @@ export class DashboardComponent implements OnInit {
         },
         plugins: {
           filler: {
-              propagate: true
+            propagate: true
           }
-      }
+        }
       }
     });
   }
 
+  public filterDashboard(value: number): void {
 
-  
-
-  public filterDashboard(value:number):void{
-    
-    const datosFiltrados = this.listVehicle.filter((x) => x.ano == value);
-    const chartData = datosFiltrados.map((vehicle) => vehicle.totalVendido);
-    const cs = datosFiltrados.map((vehicle) => vehicle.montadora);
+    const filterData = this.listVehicle.filter((x) => x.yearVehicle == value);
+    const chartData = filterData.map((vehicle) => vehicle.totalSold);
+    const cs = filterData.map((vehicle) => vehicle.brand);
 
     // Atualiza os dados do conjunto de dados
     this.myChart.data.datasets[0].data = chartData;
     this.myChartBar.data.datasets[0].data = chartData;
 
     // Atualiza os rótulos do conjunto de dados (se você precisar)
-    this.myChart.data.labels = cs; 
-    this.myChartBar.data.labels = cs; 
+    this.myChart.data.labels = cs;
+    this.myChartBar.data.labels = cs;
 
     // Atualiza o gráfico
     this.myChartBar.update();
     this.myChart.update();
   }
 
-  groupedVehicles: { ano: number, veiculos: any[] }[] = [];
-
-
-  groupVehiclesByYear(vehicles: any[]): any {
+  public groupVehiclesByYear(vehicles: any[]): void {
     const groupedVehicles: { [key: number]: any[] } = {};
 
     for (const vehicle of vehicles) {
-      const year = vehicle.ano;
+      const year = vehicle.yearVehicle;
       if (!groupedVehicles[year]) {
         groupedVehicles[year] = [];
       }
       groupedVehicles[year].push(vehicle);
     }
-  
+
     // Converte o objeto de grupos em um array de objetos tipados
-    this.groupedVehicles = Object.entries(groupedVehicles).map(([ano, veiculos]) => ({
-      ano: parseInt(ano, 10),
+    this.groupedVehicles = Object.entries(groupedVehicles).map(([yearVehicle, veiculos]) => ({
+      yearVehicle: parseInt(yearVehicle, 10),
       veiculos,
     }));
 
     this.listGroup = this.groupedVehicles
-    
   }
 
+  public getAnalysis():void {
+    this.totalVehicle = this.listVehicle.filter((x) => x.status != 'vendido').length;
+    this.totalSold = this.listVehicle.filter((x) => x.status == 'vendido').length;
+    this.totalAnalysis = this.listVehicle.filter((x) => x.status == 'analise').length;
+  }
 
 }
 
