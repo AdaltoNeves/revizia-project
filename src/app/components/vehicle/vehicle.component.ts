@@ -63,8 +63,9 @@ export class VehicleComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public openDialogVehicle(isCreate: boolean, idVehicle?: Ivehicle): void {
     const dialogRef = this._dialog.open(ModalVehicleComponent, {
-      height: '400px',
-      width: '800px',
+      height: '100%',
+      width: '30%',
+      panelClass: 'dialog-left', 
       data: { isCreate: isCreate, vehicle: idVehicle },
     });
 

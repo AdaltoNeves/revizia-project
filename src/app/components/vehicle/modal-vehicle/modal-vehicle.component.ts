@@ -6,7 +6,8 @@ import { VehiclesService } from 'src/app/services/vehicles.service';
 @Component({
   selector: 'app-modal-vehicle',
   templateUrl: './modal-vehicle.component.html',
-  styleUrls: ['./modal-vehicle.component.scss']
+  styleUrls: ['./modal-vehicle.component.scss'],
+  host: { class: 'custom-dialog' } 
 })
 export class ModalVehicleComponent implements OnInit {
   vehicleForm!: FormGroup
@@ -21,6 +22,11 @@ export class ModalVehicleComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
     this.buildFormUpdate();
+  }
+
+  ngAfterViewInit() {
+    // Configura o posicionamento à esquerda da página
+    this.dialogRef.updatePosition({ right: '0' });
   }
 
   public onNoClick(): void {
